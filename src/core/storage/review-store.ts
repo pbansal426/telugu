@@ -17,6 +17,7 @@ interface CardRow {
   scheduled_days: number;
   reps: number;
   lapses: number;
+  learning_steps?: number;
   state: number;
   last_review: string | null;
 }
@@ -33,6 +34,7 @@ function rowToCard(row: CardRow): SRSCardRecord {
     scheduledDays: row.scheduled_days,
     reps: row.reps,
     lapses: row.lapses,
+    learningSteps: row.learning_steps || 0,
     state: row.state,
     lastReview: row.last_review ? new Date(row.last_review) : undefined,
   };
@@ -40,8 +42,8 @@ function rowToCard(row: CardRow): SRSCardRecord {
 
 export function saveCard(db: DatabaseSync, card: SRSCardRecord): void {
   const stmt = db.prepare(`
-    INSERT INTO cards (id, item_id, pack_id, due, stability, difficulty, elapsed_days, scheduled_days, reps, lapses, state, last_review)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    INSERT INTO cards (id, item_id, pack_id, due, stability, difficulty, elapsed_days, scheduled_days, reps, lapses, learning_steps, state, last_review)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     ON CONFLICT(id) DO UPDATE SET
       due=excluded.due,
       stability=excluded.stability,
@@ -50,6 +52,7 @@ export function saveCard(db: DatabaseSync, card: SRSCardRecord): void {
       scheduled_days=excluded.scheduled_days,
       reps=excluded.reps,
       lapses=excluded.lapses,
+      learning_steps=excluded.learning_steps,
       state=excluded.state,
       last_review=excluded.last_review
   `);
@@ -65,6 +68,7 @@ export function saveCard(db: DatabaseSync, card: SRSCardRecord): void {
     card.scheduledDays,
     card.reps,
     card.lapses,
+    card.learningSteps || 0,
     card.state,
     card.lastReview ? card.lastReview.toISOString() : null
   );

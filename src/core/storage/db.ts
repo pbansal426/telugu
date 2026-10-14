@@ -18,6 +18,7 @@ export function createDatabaseConnection(dbPath: string = 'telugu_learning.db'):
       scheduled_days REAL NOT NULL,
       reps INTEGER NOT NULL,
       lapses INTEGER NOT NULL,
+      learning_steps INTEGER NOT NULL DEFAULT 0,
       state INTEGER NOT NULL,
       last_review TEXT
     );

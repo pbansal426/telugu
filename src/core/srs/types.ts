@@ -16,6 +16,7 @@ export interface SRSCardRecord {
   scheduledDays: number;
   reps: number;
   lapses: number;
+  learningSteps: number;
   state: number;
   lastReview?: Date;
 }

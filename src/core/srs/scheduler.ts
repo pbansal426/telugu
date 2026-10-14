@@ -22,6 +22,7 @@ function toFSRSCard(record: SRSCardRecord): FSRSCard {
     scheduled_days: record.scheduledDays,
     reps: record.reps,
     lapses: record.lapses,
+    learning_steps: record.learningSteps || 0,
     state: record.state,
     last_review: record.lastReview,
   };
@@ -39,6 +40,7 @@ function fromFSRSCard(card: FSRSCard, id: string, itemId: string, packId: string
     scheduledDays: card.scheduled_days,
     reps: card.reps,
     lapses: card.lapses,
+    learningSteps: card.learning_steps || 0,
     state: card.state,
     lastReview: card.last_review,
   };
@@ -62,7 +64,7 @@ export function gradeSRSCard(
   const fsrsCard = toFSRSCard(cardRecord);
   const scheduling = scheduler.repeat(fsrsCard, now);
 
-  const fsrsRating = grade as unknown as Rating;
+  const fsrsRating = grade as 1 | 2 | 3 | 4;
   const item = scheduling[fsrsRating];
 
   const updatedCard = fromFSRSCard(item.card, cardRecord.id, cardRecord.itemId, cardRecord.packId);
