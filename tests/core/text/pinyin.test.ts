@@ -74,6 +74,66 @@ describe("Pinyin Parser & Tone Sandhi Engine", () => {
     expect(parsePinyinText("   ")).toEqual([]);
   });
 
+  it("applies Yī tone sandhi (yī before 4th tone -> 2nd tone, before 1/2/3 -> 4th tone)", () => {
+    // yī before 4th tone -> 2nd tone
+    const words1 = parsePinyinText("yī dìng");
+    expect(words1[0].syllables[0].baseTone).toBe(1);
+    expect(words1[0].syllables[0].surfaceTone).toBe(2);
+    expect(words1[0].syllables[0].hasSandhi).toBe(true);
+    expect(words1[0].syllables[0].color).toBe("#34D399"); // Tone 2
+    expect(words1[1].syllables[0].surfaceTone).toBe(4);
+
+    const words2 = parsePinyinText("yī yàng");
+    expect(words2[0].syllables[0].surfaceTone).toBe(2);
+    expect(words2[0].syllables[0].hasSandhi).toBe(true);
+
+    // yī before 1st tone -> 4th tone
+    const words3 = parsePinyinText("yī tiān");
+    expect(words3[0].syllables[0].baseTone).toBe(1);
+    expect(words3[0].syllables[0].surfaceTone).toBe(4);
+    expect(words3[0].syllables[0].hasSandhi).toBe(true);
+    expect(words3[0].syllables[0].color).toBe("#60A5FA"); // Tone 4
+    expect(words3[1].syllables[0].surfaceTone).toBe(1);
+
+    // yī before 2nd tone -> 4th tone
+    const words4 = parsePinyinText("yī nián");
+    expect(words4[0].syllables[0].surfaceTone).toBe(4);
+    expect(words4[0].syllables[0].hasSandhi).toBe(true);
+    expect(words4[0].syllables[0].color).toBe("#60A5FA"); // Tone 4
+
+    // yī before 3rd tone -> 4th tone
+    const words5 = parsePinyinText("yī qǐ");
+    expect(words5[0].syllables[0].surfaceTone).toBe(4);
+    expect(words5[0].syllables[0].hasSandhi).toBe(true);
+    expect(words5[0].syllables[0].color).toBe("#60A5FA"); // Tone 4
+  });
+
+  it("preserves Yī base tone 1 when isolated or at phrase end", () => {
+    const single = parsePinyinText("yī");
+    expect(single[0].syllables[0].baseTone).toBe(1);
+    expect(single[0].syllables[0].surfaceTone).toBe(1);
+    expect(single[0].syllables[0].hasSandhi).toBe(false);
+
+    const endOfPhrase = parsePinyinText("dì yī");
+    expect(endOfPhrase[1].syllables[0].baseTone).toBe(1);
+    expect(endOfPhrase[1].syllables[0].surfaceTone).toBe(1);
+    expect(endOfPhrase[1].syllables[0].hasSandhi).toBe(false);
+  });
+
+  it("does not apply tone sandhi across punctuation boundaries", () => {
+    const words1 = parsePinyinText("Nǐ, hǎo");
+    expect(words1[0].syllables[0].surfaceTone).toBe(3);
+    expect(words1[0].syllables[0].hasSandhi).toBe(false);
+
+    const words2 = parsePinyinText("bù, shì");
+    expect(words2[0].syllables[0].surfaceTone).toBe(4);
+    expect(words2[0].syllables[0].hasSandhi).toBe(false);
+
+    const words3 = parsePinyinText("yī, èr, sān");
+    expect(words3[0].syllables[0].surfaceTone).toBe(1);
+    expect(words3[0].syllables[0].hasSandhi).toBe(false);
+  });
+
   it("applyToneSandhi functions as a pure function without mutating input", () => {
     const input: PinyinSyllable[] = [
       { raw: "nǐ", clean: "ni", baseTone: 3, surfaceTone: 3, hasSandhi: false, color: "#FBBF24" },

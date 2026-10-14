@@ -65,19 +65,42 @@ export function applyToneSandhi(syllables: PinyinSyllable[]): PinyinSyllable[] {
     const current = result[i];
     const next = result[i + 1];
 
-    // 3rd tone + 3rd tone -> 2nd tone + 3rd tone
-    if (current.baseTone === 3 && next && next.baseTone === 3) {
+    if (!next) continue;
+
+    // Do not apply tone sandhi across punctuation boundaries (e.g. "Nǐ, hǎo" or "yī, èr")
+    if (/[.,!?;:，。！？；：]$/.test(current.raw.trim())) {
+      continue;
+    }
+
+    // 1. 3rd tone + 3rd tone -> 2nd tone + 3rd tone
+    if (current.baseTone === 3 && next.baseTone === 3) {
       current.surfaceTone = 2;
       current.hasSandhi = true;
       current.color = getToneColor(2);
     }
 
-    // Bù sandhi: bù (4) + 4th tone -> bú (2)
     const lowerClean = current.clean.toLowerCase().replace(/[^a-zü]/g, "");
-    if (lowerClean === "bu" && current.baseTone === 4 && next && next.baseTone === 4) {
+
+    // 2. Bù sandhi: bù (4) + 4th tone -> bú (2)
+    if (lowerClean === "bu" && current.baseTone === 4 && next.baseTone === 4) {
       current.surfaceTone = 2;
       current.hasSandhi = true;
       current.color = getToneColor(2);
+    }
+
+    // 3. Yī sandhi:
+    // yī (1) + 4th tone -> yí (2) (e.g. yídìng, yíyàng)
+    // yī (1) + 1st/2nd/3rd tone -> yì (4) (e.g. yìtiān, yìnián, yìqǐ)
+    if (lowerClean === "yi" && current.baseTone === 1) {
+      if (next.baseTone === 4 || next.surfaceTone === 4) {
+        current.surfaceTone = 2;
+        current.hasSandhi = true;
+        current.color = getToneColor(2);
+      } else if ([1, 2, 3].includes(next.baseTone)) {
+        current.surfaceTone = 4;
+        current.hasSandhi = true;
+        current.color = getToneColor(4);
+      }
     }
   }
 
