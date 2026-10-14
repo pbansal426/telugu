@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from "react";
 
 export interface PitchCanvasProps {
-  targetContour: number[]; // Chao scale 1.0 - 5.0
+  targetContour: number[]; // Chao scale 1.0 - 5.0, sampled at 50ms intervals
   livePitchPoints: Array<{ timeMs: number; chaoLevel: number }>;
   isRecording: boolean;
   className?: string;
@@ -58,21 +58,58 @@ export function PitchCanvas({
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
-  // Keep latest props in ref for 60 FPS animation frame loop
+  // Synchronously store latest props in ref during render to avoid 1-frame lag
   const propsRef = useRef({
     targetContour,
     livePitchPoints,
     isRecording,
   });
+  propsRef.current = {
+    targetContour,
+    livePitchPoints,
+    isRecording,
+  };
 
+  // Cache element dimensions to avoid layout reflows in the 60 FPS animation loop
+  const sizeRef = useRef({ width: 400, height: 200 });
+
+  // Monitor resize without layout thrashing inside RAF
   useEffect(() => {
-    propsRef.current = {
-      targetContour,
-      livePitchPoints,
-      isRecording,
-    };
-  }, [targetContour, livePitchPoints, isRecording]);
+    const canvas = canvasRef.current;
+    if (!canvas) return;
 
+    const updateSize = () => {
+      const rect = canvas.getBoundingClientRect();
+      if (rect.width > 0 && rect.height > 0) {
+        sizeRef.current = {
+          width: rect.width,
+          height: rect.height,
+        };
+      }
+    };
+
+    updateSize();
+
+    let resizeObserver: ResizeObserver | null = null;
+    if (typeof ResizeObserver !== "undefined") {
+      resizeObserver = new ResizeObserver(() => {
+        updateSize();
+      });
+      resizeObserver.observe(canvas);
+    } else if (typeof window !== "undefined") {
+      window.addEventListener("resize", updateSize);
+    }
+
+    return () => {
+      if (resizeObserver) {
+        resizeObserver.disconnect();
+      } else if (typeof window !== "undefined") {
+        window.removeEventListener("resize", updateSize);
+      }
+    };
+  }, []);
+
+  // Single controlled 60 FPS animation frame loop
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -84,9 +121,7 @@ export function PitchCanvas({
       if (!ctx) return;
 
       const dpr = typeof window !== "undefined" ? window.devicePixelRatio || 1 : 1;
-      const rect = canvas.getBoundingClientRect();
-      const width = rect.width || 400;
-      const height = rect.height || 200;
+      const { width, height } = sizeRef.current;
 
       // Maintain high-DPI retina sharpness
       const targetCanvasWidth = Math.max(1, Math.round(width * dpr));
@@ -162,17 +197,13 @@ export function PitchCanvas({
 
       // -----------------------------------------------------------------------
       // 2. Target Tone Contour (Cyan / Sky: #38bdf8)
+      // Aligned with the exact same millisecond-to-pixel time axis (idx * 50ms)
       // -----------------------------------------------------------------------
       if (currentTarget && currentTarget.length > 0) {
-        const targetPoints: Point[] = currentTarget.map((level, idx) => {
-          const progress = currentTarget.length === 1 ? 0.5 : idx / (currentTarget.length - 1);
-          // Scale target contour to occupy the phrase window
-          const phraseSpan = Math.min(usableW, (Math.max(1200, targetDurationMs) / maxDurationMs) * usableW);
-          return {
-            x: padLeft + progress * phraseSpan,
-            y: chaoToY(level),
-          };
-        });
+        const targetPoints: Point[] = currentTarget.map((level, idx) => ({
+          x: padLeft + Math.min(1, Math.max(0, (idx * 50) / maxDurationMs)) * usableW,
+          y: chaoToY(level),
+        }));
 
         ctx.save();
         ctx.beginPath();
@@ -246,18 +277,16 @@ export function PitchCanvas({
       }
 
       ctx.restore();
-
-      // Schedule next 60 FPS frame
-      animId = requestAnimationFrame(draw);
     };
 
-    // Draw initial frame immediately, then maintain 60 FPS loop
-    draw();
-
+    // Single controlled animation loop
     const renderLoop = () => {
       draw();
       animId = requestAnimationFrame(renderLoop);
     };
+
+    // Immediate draw on mount
+    draw();
     animId = requestAnimationFrame(renderLoop);
 
     return () => {

@@ -220,5 +220,37 @@ describe("PitchCanvas Component", () => {
     // Both segments should trigger stroke and be rendered
     expect(mockContext.stroke).toHaveBeenCalled();
   });
+
+  it("aligns target contour points to the exact same time axis as live vocal points", () => {
+    // Both targetContour[1] (50ms) and livePitchPoints[1] (50ms) must map to identical X coordinates
+    render(
+      <PitchCanvas
+        targetContour={[3.0, 4.0]}
+        livePitchPoints={[
+          { timeMs: 0, chaoLevel: 3.0 },
+          { timeMs: 50, chaoLevel: 4.0 },
+        ]}
+        isRecording={false}
+      />
+    );
+
+    // Find moveTo calls for target and live
+    const moveToCalls = mockContext.moveTo.mock.calls;
+    // Both start at time = 0ms (padLeft = 36)
+    expect(moveToCalls.length).toBeGreaterThanOrEqual(2);
+    expect(moveToCalls[0][0]).toBe(36); // target start x
+    expect(moveToCalls[1][0]).toBe(36); // live start x
+
+    // Find lineTo calls for target and live (both 2-point arrays call lineTo)
+    const lineToCalls = mockContext.lineTo.mock.calls;
+    // Filter grid lines (which end at width - padRight)
+    const segmentLineTos = lineToCalls.filter((c: number[]) => c[0] < 380);
+    expect(segmentLineTos.length).toBeGreaterThanOrEqual(2);
+    // target point at idx 1 (50ms) and live point at 50ms must have identical X coordinates
+    const targetX50 = segmentLineTos[0][0];
+    const liveX50 = segmentLineTos[1][0];
+    expect(targetX50).toBeCloseTo(liveX50, 4);
+  });
 });
+
 
