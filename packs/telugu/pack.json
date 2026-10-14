@@ -1,0 +1,161 @@
+{
+  "id": "telugu-starter",
+  "name": "Telugu Conversational Starter",
+  "language": "te",
+  "dialect": "Telangana",
+  "version": "1.0.0",
+  "description": "Spoken everyday conversational Telugu seeded with Telangana dialect forms.",
+  "items": [
+    {
+      "id": "namaskaram",
+      "te": "నమస్కారం",
+      "roman": "Namaskaram",
+      "en": "Hello / Greetings",
+      "category": "greetings",
+      "telanganaNote": "Universal polite greeting across all dialects."
+    },
+    {
+      "id": "ela-unnaru",
+      "te": "ఎలా ఉన్నారు?",
+      "roman": "Ela unnaru?",
+      "en": "How are you? (polite)",
+      "category": "greetings"
+    },
+    {
+      "id": "bagunnanu",
+      "te": "బాగున్నాను",
+      "roman": "Bagunnanu",
+      "en": "I am fine",
+      "category": "greetings"
+    },
+    {
+      "id": "nee-peru-enti",
+      "te": "నీ పేరు ఏంటి?",
+      "roman": "Nee peru enti?",
+      "en": "What is your name?",
+      "category": "conversation",
+      "telanganaNote": "Telangana colloquial uses 'enti' instead of the textbook 'emiti'."
+    },
+    {
+      "id": "naa-peru",
+      "te": "నా పేరు...",
+      "roman": "Naa peru...",
+      "en": "My name is...",
+      "category": "conversation"
+    },
+    {
+      "id": "thinnara",
+      "te": "తిన్నారా?",
+      "roman": "Thinnara?",
+      "en": "Have you eaten? (polite cultural check-in)",
+      "category": "greetings"
+    },
+    {
+      "id": "naaku-ardham-kaaledu",
+      "te": "నాకు అర్థం కాలేదు",
+      "roman": "Naaku ardham kaaledu",
+      "en": "I don't understand",
+      "category": "survival"
+    },
+    {
+      "id": "malli-cheppandi",
+      "te": "మళ్ళీ చెప్పండి",
+      "roman": "Malli cheppandi",
+      "en": "Please say it again",
+      "category": "survival"
+    },
+    {
+      "id": "kaavali-mangoes",
+      "te": "నాకు మామిడి పండ్లు కావాలి",
+      "roman": "Naaku mamidi pandlu kaavali",
+      "en": "I want to buy/have mangoes",
+      "category": "food",
+      "telanganaNote": "In natural spoken speech 'kaavali' indicates wanting something."
+    },
+    {
+      "id": "idhi-entha",
+      "te": "ఇది ఎంత?",
+      "roman": "Idhi entha?",
+      "en": "How much is this?",
+      "category": "survival"
+    },
+    {
+      "id": "ikkadiki-raa",
+      "te": "ఇక్కడికి రా",
+      "roman": "Ikkadiki raa",
+      "en": "Come here (informal/friendly)",
+      "category": "conversation",
+      "telanganaNote": "'Raa' is common casual speech among friends and peers."
+    },
+    {
+      "id": "bathroom-ekkada",
+      "te": "బాత్‌రూమ్ ఎక్కడ ఉంది?",
+      "roman": "Bathroom ekkada undi?",
+      "en": "Where is the bathroom?",
+      "category": "survival"
+    },
+    {
+      "id": "neellu",
+      "te": "నీళ్లు",
+      "roman": "Neellu",
+      "en": "Water",
+      "category": "food"
+    },
+    {
+      "id": "annam",
+      "te": "అన్నం",
+      "roman": "Annam",
+      "en": "Cooked rice / meal",
+      "category": "food"
+    },
+    {
+      "id": "akali-ga-undi",
+      "te": "నాకు ఆకలిగా ఉంది",
+      "roman": "Naaku akali ga undi",
+      "en": "I am hungry",
+      "category": "food"
+    },
+    {
+      "id": "chaala-bagundi",
+      "te": "చాలా బాగుంది",
+      "roman": "Chaala bagundi",
+      "en": "It is very good",
+      "category": "conversation"
+    },
+    {
+      "id": "dhanyavadalu",
+      "te": "ధన్యవాదాలు",
+      "roman": "Dhanyavadalu",
+      "en": "Thank you (formal)",
+      "category": "greetings"
+    },
+    {
+      "id": "avunu",
+      "te": "అవును",
+      "roman": "Avunu",
+      "en": "Yes",
+      "category": "conversation"
+    },
+    {
+      "id": "kaadu",
+      "te": "కాదు",
+      "roman": "Kaadu",
+      "en": "No (it is not)",
+      "category": "conversation"
+    },
+    {
+      "id": "vaddu",
+      "te": "వద్దు",
+      "roman": "Vaddu",
+      "en": "I don't want it / don't do it",
+      "category": "survival"
+    },
+    {
+      "id": "sare",
+      "te": "సరే",
+      "roman": "Sare",
+      "en": "Okay / Alright",
+      "category": "conversation"
+    }
+  ]
+}
