@@ -1,0 +1,226 @@
+[
+  {
+    "id": "banter-ni-chi-le-ma",
+    "english": "Have you eaten?",
+    "pinyin": "Nǐ chīle ma?",
+    "category": "banter",
+    "colloquialNote": "The most ubiquitous daily greeting in Chinese culture; functionally equivalent to 'How are you?'",
+    "targetContour": [2.5, 2.0, 1.5, 2.0, 5.0, 5.0, 5.0, 5.0, 3.0, 2.5, 2.5, 2.0]
+  },
+  {
+    "id": "banter-zuijin-zenmeyang",
+    "english": "How have you been lately?",
+    "pinyin": "Zuìjìn zěnmeyàng?",
+    "category": "banter",
+    "colloquialNote": "Casual check-in with friends or acquaintances you haven't seen in a few days.",
+    "targetContour": [5.0, 4.2, 3.0, 1.5, 4.8, 4.0, 2.8, 1.2, 2.2, 1.8, 1.2, 1.8, 2.8, 2.2, 5.0, 4.0, 2.5, 1.0]
+  },
+  {
+    "id": "banter-hao-jiu-bu-jian",
+    "english": "Long time no see!",
+    "pinyin": "Hǎo jiǔ bú jiàn!",
+    "category": "banter",
+    "colloquialNote": "Warm greeting when meeting a friend after an extended period. Note tone sandhi: hǎo turns 2nd tone before jiǔ, and bù turns 2nd tone before jiàn.",
+    "targetContour": [3.0, 3.5, 4.2, 4.8, 2.5, 1.8, 1.2, 2.0, 3.8, 3.2, 3.8, 4.5, 5.0, 5.0, 4.0, 2.5, 1.2]
+  },
+  {
+    "id": "banter-gan-ma-ne",
+    "english": "What are you up to?",
+    "pinyin": "Gàn má ne?",
+    "category": "banter",
+    "colloquialNote": "Very common colloquial banter asking what someone is doing right now.",
+    "targetContour": [5.0, 4.2, 2.8, 1.5, 3.2, 3.8, 4.6, 5.0, 3.0, 2.4]
+  },
+  {
+    "id": "banter-chi-beng-le",
+    "english": "I'm stuffed!",
+    "pinyin": "Chī bēng le!",
+    "category": "banter",
+    "colloquialNote": "Humorous slang phrase meaning you ate until you're bursting.",
+    "targetContour": [5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 4.8, 3.2, 2.4]
+  },
+  {
+    "id": "dining-wo-yao-zhege",
+    "english": "I would like this one.",
+    "pinyin": "Wǒ yào zhège.",
+    "category": "dining",
+    "colloquialNote": "Essential ordering phrase when pointing to a menu item.",
+    "targetContour": [2.2, 1.8, 1.4, 2.0, 5.0, 4.2, 2.8, 1.5, 4.8, 3.8, 2.5, 1.8, 2.5, 2.0]
+  },
+  {
+    "id": "dining-bu-yao-tai-la",
+    "english": "Not too spicy, please.",
+    "pinyin": "Bú yào tài là.",
+    "category": "dining",
+    "colloquialNote": "Crucial survival phrase when dining in Sichuan or Hunan restaurants. Tone sandhi: bù -> bú before 4th tone yào.",
+    "targetContour": [3.2, 3.8, 4.6, 5.0, 5.0, 4.0, 2.5, 1.5, 4.8, 3.8, 2.4, 1.5, 5.0, 3.8, 2.2, 1.0]
+  },
+  {
+    "id": "dining-maidan",
+    "english": "Check, please!",
+    "pinyin": "Mǎidān!",
+    "category": "dining",
+    "colloquialNote": "Universal standard phrase to ask for the bill at any restaurant.",
+    "targetContour": [2.2, 1.6, 1.2, 1.8, 5.0, 5.0, 5.0, 5.0]
+  },
+  {
+    "id": "dining-lai-yi-fen-zhege",
+    "english": "Bring us one portion of this!",
+    "pinyin": "Lái yí fèn zhège.",
+    "category": "dining",
+    "colloquialNote": "Natural restaurant phrasing when ordering dishes. Tone sandhi: yī -> yí before 4th tone fèn.",
+    "targetContour": [3.2, 3.8, 4.5, 5.0, 3.5, 4.0, 4.6, 5.0, 5.0, 4.0, 2.8, 1.5, 4.8, 3.8, 2.5, 1.8, 2.4, 2.0]
+  },
+  {
+    "id": "dining-ke-yi-da-bao-ma",
+    "english": "Can I get this boxed up to go?",
+    "pinyin": "Kěyǐ dǎbāo ma?",
+    "category": "dining",
+    "colloquialNote": "Standard colloquial expression for taking leftover food home or ordering takeaway.",
+    "targetContour": [3.0, 3.6, 4.4, 5.0, 2.4, 1.8, 1.2, 1.8, 3.0, 3.6, 4.5, 5.0, 5.0, 5.0, 5.0, 5.0, 2.8, 2.0]
+  },
+  {
+    "id": "plans-mingtian-you-kong-ma",
+    "english": "Are you free tomorrow?",
+    "pinyin": "Míngtiān yǒu kòng ma?",
+    "category": "plans",
+    "colloquialNote": "Casual and polite way to inquire about someone's availability before suggesting plans.",
+    "targetContour": [3.2, 3.8, 4.5, 5.0, 5.0, 5.0, 5.0, 5.0, 2.2, 1.8, 1.4, 2.0, 5.0, 4.2, 2.8, 1.5, 2.6, 2.0]
+  },
+  {
+    "id": "plans-ji-dian-jian-mian",
+    "english": "What time shall we meet?",
+    "pinyin": "Jǐ diǎn jiànmiàn?",
+    "category": "plans",
+    "colloquialNote": "Direct coordination question when setting a rendezvous.",
+    "targetContour": [3.0, 3.6, 4.4, 4.9, 2.4, 1.8, 1.3, 1.8, 5.0, 4.2, 2.9, 1.6, 4.8, 3.8, 2.4, 1.2]
+  },
+  {
+    "id": "plans-zai-na-li-deng-ni",
+    "english": "Where should I wait for you?",
+    "pinyin": "Zài nǎli děng nǐ?",
+    "category": "plans",
+    "colloquialNote": "Practical coordination phrase when approaching a meeting spot.",
+    "targetContour": [5.0, 4.0, 2.8, 1.5, 2.2, 1.6, 1.2, 1.8, 2.5, 2.0, 3.0, 3.7, 4.5, 5.0, 2.5, 1.8, 1.0, 2.2, 3.8]
+  },
+  {
+    "id": "plans-wo-mashang-dao",
+    "english": "I'm arriving right away / almost there!",
+    "pinyin": "Wǒ mǎshàng dào!",
+    "category": "plans",
+    "colloquialNote": "Universally sent over WeChat or spoken when running slightly late or just pulling up.",
+    "targetContour": [3.2, 3.8, 4.5, 5.0, 2.2, 1.6, 1.2, 1.8, 5.0, 4.0, 2.8, 1.6, 4.9, 3.8, 2.2, 1.1]
+  },
+  {
+    "id": "plans-women-zou-ba",
+    "english": "Let's get going!",
+    "pinyin": "Wǒmen zǒu ba!",
+    "category": "plans",
+    "colloquialNote": "Upbeat invitation to initiate an outing or change locations.",
+    "targetContour": [2.4, 1.8, 1.3, 1.8, 2.8, 2.2, 2.5, 1.8, 1.2, 2.2, 3.5, 2.4, 1.8]
+  },
+  {
+    "id": "opinions-wo-xiang-qu",
+    "english": "I'd really love to go...",
+    "pinyin": "Wǒ xiǎng qù...",
+    "category": "opinions",
+    "colloquialNote": "Natural expression of desire or intent when discussing places to visit. Tone sandhi: wǒ -> 2nd tone before xiǎng.",
+    "targetContour": [3.0, 3.6, 4.4, 5.0, 2.4, 1.8, 1.2, 1.8, 5.0, 4.0, 2.6, 1.2]
+  },
+  {
+    "id": "opinions-tai-bang-le",
+    "english": "That's awesome / fantastic!",
+    "pinyin": "Tài bàng le!",
+    "category": "opinions",
+    "colloquialNote": "High-energy colloquial affirmation when hearing good news.",
+    "targetContour": [5.0, 4.2, 2.9, 1.6, 5.0, 3.9, 2.5, 1.3, 2.8, 2.0]
+  },
+  {
+    "id": "opinions-wo-juede-ting-hao",
+    "english": "I think it's pretty good.",
+    "pinyin": "Wǒ juéde tǐng hǎo.",
+    "category": "opinions",
+    "colloquialNote": "Gentle, understated positive opinion suitable for any recommendation.",
+    "targetContour": [2.2, 1.8, 1.4, 1.9, 3.0, 3.7, 4.5, 5.0, 2.8, 2.3, 3.2, 3.8, 4.6, 5.0, 2.5, 1.8, 1.0, 2.2, 3.8]
+  },
+  {
+    "id": "opinions-mei-shi-er",
+    "english": "No problem / It's nothing.",
+    "pinyin": "Méi shìr.",
+    "category": "opinions",
+    "colloquialNote": "Classic northern rhotic (erhua) reassurance; warm and laid-back.",
+    "targetContour": [3.2, 3.8, 4.6, 5.0, 5.0, 4.1, 2.7, 1.2]
+  },
+  {
+    "id": "opinions-suibian-ni",
+    "english": "Whatever you prefer / It's up to you.",
+    "pinyin": "Suíbiàn nǐ.",
+    "category": "opinions",
+    "colloquialNote": "Easygoing concession allowing the other person to make the choice.",
+    "targetContour": [3.2, 3.8, 4.5, 5.0, 5.0, 4.0, 2.7, 1.4, 2.4, 1.7, 1.1, 2.1, 3.6]
+  },
+  {
+    "id": "clarifications-mafan-zai-shuo-yi-ci",
+    "english": "Could you please say that one more time?",
+    "pinyin": "Máfan zài shuō yí cì.",
+    "category": "clarifications",
+    "colloquialNote": "Polite and natural request when you miss something spoken quickly. Tone sandhi: yī -> yí before 4th tone cì.",
+    "targetContour": [3.0, 3.7, 4.5, 5.0, 2.8, 2.2, 5.0, 4.1, 2.8, 1.5, 5.0, 5.0, 5.0, 5.0, 3.5, 4.0, 4.6, 5.0, 5.0, 3.9, 2.4, 1.2]
+  },
+  {
+    "id": "clarifications-ni-gangcai-shuo-shenme",
+    "english": "What did you just say?",
+    "pinyin": "Nǐ gāngcái shuō shénme?",
+    "category": "clarifications",
+    "colloquialNote": "Casual informal clarification among friends.",
+    "targetContour": [2.4, 1.8, 1.3, 1.8, 5.0, 5.0, 5.0, 5.0, 3.2, 3.8, 4.6, 5.0, 5.0, 5.0, 5.0, 5.0, 3.2, 3.8, 4.5, 5.0, 2.8, 2.1]
+  },
+  {
+    "id": "clarifications-dong-le",
+    "english": "Got it! / Understood.",
+    "pinyin": "Dǒng le!",
+    "category": "clarifications",
+    "colloquialNote": "Crisp, confident confirmation that you comprehended the explanation.",
+    "targetContour": [2.4, 1.6, 1.0, 2.2, 3.6, 2.6, 2.0]
+  },
+  {
+    "id": "clarifications-qing-shuo-man-yi-dianr",
+    "english": "Please speak a little slower.",
+    "pinyin": "Qǐng shuō màn yìdiǎnr.",
+    "category": "clarifications",
+    "colloquialNote": "Friendly and practical phrase to gently throttle native speaking speed.",
+    "targetContour": [2.2, 1.8, 1.3, 1.9, 5.0, 5.0, 5.0, 5.0, 5.0, 4.0, 2.8, 1.5, 4.8, 3.8, 2.5, 1.6, 2.5, 1.8, 1.1, 2.0, 3.5]
+  },
+  {
+    "id": "partings-wo-xian-zou-le",
+    "english": "I'm heading out first!",
+    "pinyin": "Wǒ xiān zǒu le.",
+    "category": "partings",
+    "colloquialNote": "Standard polite phrase when leaving a social gathering or office before others.",
+    "targetContour": [2.4, 1.8, 1.3, 1.9, 5.0, 5.0, 5.0, 5.0, 2.5, 1.8, 1.2, 2.2, 3.6, 2.6, 2.0]
+  },
+  {
+    "id": "partings-daojia-fa-weixin",
+    "english": "Text me when you get home!",
+    "pinyin": "Dàojiā fā Wēixìn!",
+    "category": "partings",
+    "colloquialNote": "Warm, caring send-off commonly said between friends and dates.",
+    "targetContour": [5.0, 4.1, 2.8, 1.5, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 3.9, 2.4, 1.2]
+  },
+  {
+    "id": "partings-hui-tou-jian",
+    "english": "See you around / Catch you later!",
+    "pinyin": "Huítóu jiàn!",
+    "category": "partings",
+    "colloquialNote": "Very natural, everyday parting phrase equivalent to 'See you later'.",
+    "targetContour": [3.2, 3.8, 4.5, 5.0, 3.4, 4.0, 4.7, 5.0, 5.0, 4.0, 2.5, 1.2]
+  },
+  {
+    "id": "partings-man-zou",
+    "english": "Take care / Walk slowly!",
+    "pinyin": "Màn zǒu!",
+    "category": "partings",
+    "colloquialNote": "Traditional polite farewell said by a host or shopkeeper to departing guests.",
+    "targetContour": [5.0, 4.1, 2.7, 1.4, 2.5, 1.8, 1.1, 2.2, 3.8]
+  }
+]
