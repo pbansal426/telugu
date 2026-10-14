@@ -40,7 +40,7 @@ Probe result (Gemma 26B, Telugu): vocabulary/script correct and romanization goo
 
 Principles:
 - **Offline-first content**: AI generates in a *content pipeline* (batch), results are reviewed/validated and cached as static packs. Runtime works with the model off. Live LLM used only for Conversation Tutor, and degrades gracefully.
-- **Never trust raw generation for target-language truth.** Validation pipeline per item: (a) schema check (b) script/Unicode normalization check (c) round-trip back-translation by a *different* model, similarity threshold (d) vocabulary-constraint check against learner's known set (e) lexicon cross-check (Wiktionary/IndicCorp frequency) (f) human review queue for flagged items (you + native-speaker friends/family). Confidence + `reviewed` flag stored per item.
+- **Never trust raw generation for target-language truth.** Validation pipeline per item: (a) schema check (b) script/Unicode normalization check (c) round-trip back-translation by a *different* model, similarity threshold (d) vocabulary-constraint check against learner's known set (e) lexicon cross-check (Wiktionary/IndicCorp frequency) (f) review queue for flagged items (self-review; native speakers optional). Confidence + `reviewed` flag stored per item.
 - **Model roles**: Gemma 26B = authoring/tutor; Qwen/gpt-oss = independent verifier (cross-model disagreement = flag); gemma-e4b = fast hints/gloss; nomic embeddings = semantic search/dedup of items.
 - **Grounding data**: frequency lists, Wiktionary Telugu dumps, Samanantar (en-te pairs), Aksharantar (transliteration), IndicCorp (frequency). Used to seed curriculum ordering and to verify, not to hallucinate.
 
@@ -70,8 +70,11 @@ Principles:
 - After 30 days @ 20 min/day: read any Telugu syllable (incl. common conjuncts) at >=95% accuracy; ~400 spoken-useful items at >=90% retention; hold a 2-minute scripted market/family conversation.
 - AI content error rate on gold set < 5% after validation; zero unreviewed items in "core" pack.
 
-## 10. Open questions
+## 10. Decisions (resolved 2026-10-14)
+- **Dialect**: Telangana Telugu. Pack tags dialect-specific vocabulary/forms; audio voices should be checked for Telangana-appropriate pronunciation (standard TTS voices skew coastal/standard Andhra; validate against native speakers and note as risk).
+- **Audience/hosting**: personal use only, runs on this Mac. Dataset/voice licensing is non-blocking (still record sources), no multi-user auth needed initially.
+- **Native-speaker review**: not required. Validation relies on cross-model checks, lexicon/corpus grounding, and a hand-checked gold set; native speakers (if ever available) are an optional upgrade, not a dependency.
+
+## 11. Open questions
 - Romanization scheme choice.
-- Dialect target (Andhra vs Telangana) for audio/vocabulary.
-- Access to native speakers for review/recordings.
-- Hosting: personal-only on this Mac vs public deploy (affects licensing of datasets/voices; Indic Parler-TTS is Apache-2.0, check each dataset license).
+- How to get Telangana-accurate audio without native recordings (evaluate TTS outputs on spoken Telangana forms; fall back to recording own voice after learning).
