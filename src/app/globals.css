@@ -6,8 +6,34 @@
   body {
     @apply antialiased;
   }
+
+  ::selection {
+    background-color: rgba(56, 189, 248, 0.3);
+    color: #f4f4f5;
+  }
+
+  /* Custom precision dark scrollbars */
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  *::-webkit-scrollbar-track {
+    background: #090a0f;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: #27272a;
+    border-radius: 3px;
+  }
+  *::-webkit-scrollbar-thumb:hover {
+    background: #3f3f46;
+  }
+}
+
+.tabular-nums {
+  font-feature-settings: "tnum" 1;
 }
 
 .font-telugu {
   font-family: var(--font-telugu), system-ui, -apple-system, sans-serif;
 }
+
