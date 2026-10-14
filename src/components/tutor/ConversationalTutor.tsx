@@ -753,7 +753,13 @@ export function ConversationalTutor({ initialItems }: ConversationalTutorProps):
                 <span className="text-[10px] font-mono text-zinc-500 uppercase">CHANNEL:</span>
                 <select
                   value={scenario}
-                  onChange={(e) => setScenario(e.target.value)}
+                  onChange={(e) => {
+                    const newSc = e.target.value;
+                    setScenario(newSc);
+                    if (DEFAULT_CORRECTIONS[newSc]) {
+                      setCorrectionTip(DEFAULT_CORRECTIONS[newSc]);
+                    }
+                  }}
                   className="bg-[#14151f] border border-white/[0.1] text-xs text-zinc-200 rounded-xl px-3 py-1.5 focus:outline-none focus:border-sky-500 font-mono shadow-sm cursor-pointer"
                 >
                   {SCENARIOS.map((sc) => (
